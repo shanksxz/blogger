@@ -7,12 +7,15 @@ export default async function MyBlog() {
     const posts = await getPosts();
 
     return (
-        <div
-            className="grid grid-col-1 gap-5 md:grid-cols-3">
-            {posts?.blogs?.map((post: BlogProp) => {
-                return <Blogs key={post.id} posts={post} />
-            })}
-        </div>
+        <section>
+            <h1 className="text-[2rem] font-bold mb-2">My Posts</h1>
+            <div
+                className="grid grid-col-1 gap-5 md:grid-cols-3">
+                {posts?.blogs?.map((post: BlogProp) => {
+                    return <Blogs key={post.id} posts={post} />
+                })}
+            </div>
+        </section >
     );
 
 }

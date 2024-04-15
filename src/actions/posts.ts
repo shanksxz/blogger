@@ -130,7 +130,6 @@ export const getPost = async (id : string) => {
         const post = await prisma.post.findFirst({
             where : {
                 id,
-                authorEmail : user.email as string
             }
         });
 

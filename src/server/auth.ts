@@ -43,13 +43,7 @@ export const authOptions: NextAuthOptions = {
     strategy : "jwt"
   },
   callbacks: {
-    // session: ({ session, user }) => ({
-    //   ...session,
-    //   user: {
-    //     ...session.user,
-    //     id: user.id,
-    //   },
-    // }),
+      // 
   },
   providers: [
     GoogleProvider({

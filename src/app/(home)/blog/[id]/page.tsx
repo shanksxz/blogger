@@ -8,25 +8,21 @@ export default async function Page({ params }: { params: { id: string } }) {
 
     const post = await getPost(params.id);
 
-    if (!post) {
-        return {
-            notFound: true
-        }
+    if (post.status !== 200) {
+        return (
+            <div>Post not found</div>
+        )
     }
 
     return (
-        <div className="p-5 bg-background_secondary">
-            <h1 className="text-[2rem]">{post?.post?.title}</h1>
-            {/* <Image
-                src={post.post?.img as string}
-                width={200}
-                height={200}
-                alt=""
-                className='float-left'
-                // className="rounded-sm w-full h-[200px] object-cover"
-            /> */}
-            <div dangerouslySetInnerHTML={{ __html: post.post?.description as string }}></div>
-        </div>
+        <section className="p-5">
+            <div className="bg-background_secondary">
+                <img src={post.post?.img as string} className='mx-auto' alt="" />
+                <p className="mt-2">{post.post?.createdAt.toDateString()}</p>
+                <h1 className="text-[3rem]">{post?.post?.title}</h1>
+                <div className="mt-2" dangerouslySetInnerHTML={{ __html: post.post?.description || '<h1> Error! </h1>' }}></div>
+            </div>
+        </section>
     )
 
 }
